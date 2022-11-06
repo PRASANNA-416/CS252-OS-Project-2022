@@ -18,7 +18,7 @@ Ubuntu operating system and GCC compiler to compile the C code.
 
 **Output**
 
- ![App Screenshot](https://github.com/bhim4078652/CS-252-Minor-Assignment/blob/main/Q-3.21/3.21%20os%20assignment.png)
+ ![App Screenshot](https://github.com/PRASANNA-416/CS252-OS-Project-2022/blob/main/Answer%20for%203.21/output%20for%203_21.JPG)
 
 ## Implementation
 - This C program creates child process and this child process is responsible for printing the Collatz Conjecture sequence .
