@@ -10,8 +10,8 @@ Ubuntu operating system and GCC compiler to compile the C code.
 
 ## Steps to run the programs
 
-### sourcecode.c
- - Open the terminal and navigate to the directory where the file **solution.c** is present
+### Solution.c
+ - Open the terminal and navigate to the directory where the file **Solution.c** is present
 -  gcc sourcecode.c
 - ./a.out
 
