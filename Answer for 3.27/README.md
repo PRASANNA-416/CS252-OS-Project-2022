@@ -12,38 +12,43 @@ Ubuntu operating system and GCC compiler to compile the C code.
 
 ### Solution.c
  - Open the terminal and navigate to the directory where the file **Solution.c** is present
--  gcc sourcecode.c
+ - Write some text int the file "input.txt"
+ - Also create destination file with name "copy.txt"
+-  gcc Solution.c
 - ./a.out
 
 
-**Output**
-
- ![App Screenshot](https://github.com/PRASANNA-416/CS252-OS-Project-2022/blob/main/Answer%20for%203.21/output%20for%203_21.JPG)
-
 ## Implementation
-- This C program creates child process and this child process is responsible for printing the Collatz Conjecture sequence .
-- In linux os fork() system call is used to create child process.
-- Once the parent process calls fork() system call then parents wait for child process to complete the work assigned by calling wait(NULL) system call.
-- This code is applicable only for non negative integers as input.
+- Made two files "input.txt" and destination file "copy.txt"
+- Created a pipe (fd[0] -> for reading from the pipe. fd[1] -> for writing into the pipe).
+- Invoked the fork sys call.
+- Using write() sys call the child process pushed the content into pipe from the input.txt file.
+- And using the read() sys call, child process read the content from the pipe to the output destination file.
 
-## About fork() system call
--Fork system call is used for creating a new process, which is called child process, which runs concurrently with the process that makes the fork() call (parent process). After a new child process is created, both processes will execute the next instruction following the fork() system call.
--A child process uses the same pc(program counter), same CPU registers, same open files which use in the parent process.
 
--It takes no parameters and returns an integer value. 
-- Negative Value: creation of a child process was unsuccessful.
-- Zero: Returned to the newly created child process.
-- Positive value: Returned to parent or caller. The value contains process ID of newly created child process.
+## About Unix Pipes
+-Pipe is one-way communication only i.e we can use a pipe such that One process write to the pipe, and the other process reads from the pipe. It opens a pipe, which is an area of main memory that is treated as a "virtual file".
 
-## About wait() system call
-A call to wait() blocks the calling process until one of its child processes exits or a signal is received. After child process terminates, parent continues its execution after wait system call instruction. 
+-The pipe can be used by the creating process, as well as all its child processes, for reading and writing. One process can write to this "virtual file" or pipe and another related process can read from it.
 
-Child process may terminate due to any of these: 
-- It calls exit();
-- It returns (an int) from main
-- It receives a signal (from the OS or another process) whose default action is to terminate.
+![App Screenshot](https://github.com/PRASANNA-416/CS252-OS-Project-2022/blob/main/Answer%20for%203.27/pipe1.jpg)
 
-![App Screenshot](https://github.com/bhim4078652/CS-252-Minor-Assignment/blob/main/Q-3.21/pic%202.png)
+## About write() and read() to pipe sys call
+int pipe(int fds[2]);
 
-## Inference
-The child process created by parent process is able to print the Collatz Conjecture sequence and once the child process exits then the parent comes out of waiting state and exectues rest of the code.
+Parameters :
+fd[0] will be the fd(file descriptor) for the 
+read end of pipe.
+fd[1] will be the fd for the write end of pipe.
+Returns : 0 on Success.
+-1 on error.
+
+- write(file descriptor to pipe, pointer from where to copy, size of memory)
+- read(file descriptor to pipe, pointer to where to write , size of memory)
+
+## Parent and child sharing a pipe
+
+When we use fork in any process, file descriptors remain open across child process and also parent process. If we call fork after creating a pipe, then the parent and child can communicate via the pipe
+
+![App Screenshot](https://github.com/PRASANNA-416/CS252-OS-Project-2022/blob/main/Answer%20for%203.27/pipe2.jpg)
+
