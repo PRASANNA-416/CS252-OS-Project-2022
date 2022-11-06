@@ -12,7 +12,7 @@ Ubuntu operating system and GCC compiler to compile the C code.
 
 ### Solution.c
  - Open the terminal and navigate to the directory where the file **Solution.c** is present
--  gcc sourcecode.c
+-  gcc solution.c
 - ./a.out
 
 
