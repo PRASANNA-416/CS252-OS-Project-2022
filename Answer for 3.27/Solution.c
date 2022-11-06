@@ -7,11 +7,12 @@
 #include <unistd.h>
 #include <time.h>
 
+
 int main(int argc, char *argv[]){
 
     FILE* input;
     FILE* copy;
-    char str[1000];
+    char str[1000]={0};
     input = fopen("input.txt", "a+");
     copy = fopen("copy.txt", "w");
  
@@ -20,7 +21,7 @@ int main(int argc, char *argv[]){
     }
  
  
-    fgets(str, 1000, input);
+    fread(str, sizeof(char), 1000,input);
 
 
 
@@ -31,24 +32,25 @@ int main(int argc, char *argv[]){
 
     if(pid == 0){
         
-        close(fd[0]);
         str[strlen(str) - 1] = '\0';
 
         int n = strlen(str) + 1;
-        write(fd[1], &n, sizeof(int));
         write(fd[1], str, sizeof(char)*n);
         printf("child prcoess copied content from input.txt to pipe\n");
-        close(fd[1]);
+    
 
-        read(fd[0], &n, sizeof(int));
-        read(fd[0], str, sizeof(char)*n);
+        char temp[1000]={0};
 
-        fputs(str, copy);
+        
+        read(fd[0],(void *) temp, sizeof(char)*n);
+    
+        fwrite(temp,sizeof(char),n,copy);
         printf("child process written the content from pipe to destination file copy.txt\n");
-        close(fd[0]);
+        
     }
     else{
-        printf("Parent proces waiting for child process to finish execution\n");
+
+        printf("Parent process waiting for child process to finish execution\n");
         wait(NULL);
     }
 
