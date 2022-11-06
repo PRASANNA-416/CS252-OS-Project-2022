@@ -37,23 +37,22 @@ int main(int argc, char *argv[]){
         int n = strlen(str) + 1;
         write(fd[1], &n, sizeof(int));
         write(fd[1], str, sizeof(char)*n);
-
+        printf("child prcoess copied content from input.txt to pipe\n");
         close(fd[1]);
-    }
-    else{
-
-        close(fd[1]);
-        char str[1000];
-        int n;
 
         read(fd[0], &n, sizeof(int));
         read(fd[0], str, sizeof(char)*n);
 
         fputs(str, copy);
+        printf("child process written the content from pipe to destination file copy.txt\n");
         close(fd[0]);
+    }
+    else{
+        printf("Parent proces waiting for child process to finish execution\n");
         wait(NULL);
     }
 
     fclose(input);
     fclose(copy);
 }
+
