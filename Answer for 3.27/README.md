@@ -52,3 +52,6 @@ When we use fork in any process, file descriptors remain open across child proce
 
 ![App Screenshot](https://github.com/PRASANNA-416/CS252-OS-Project-2022/blob/main/Answer%20for%203.27/pipe2.jpg)
 
+##  Reference(s)
+- https://www.youtube.com/playlist?list=PLfqABt5AS4FkW5mOn2Tn9ZZLLDwA3kZUY
+- https://www.geeksforgeeks.org/pipe-system-call/
