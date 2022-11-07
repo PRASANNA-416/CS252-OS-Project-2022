@@ -12,3 +12,7 @@ System Concepts by Abraham Silberschatz, Peter Baer Galvin and Greg Gagne.
 **[Question 2: Chapter 3- 3.27](https://github.com/PRASANNA-416/CS252-OS-Project-2022/tree/main/Answer%20for%203.27)**
 
 ![question 3.27](https://github.com/PRASANNA-416/CS252-OS-Project-2022/blob/main/Question327.JPG)
+
+## Author
+- Prasanna PM
+- 201EC242
