@@ -45,5 +45,12 @@ Child process may terminate due to any of these:
 
 ![App Screenshot](https://github.com/bhim4078652/CS-252-Minor-Assignment/blob/main/Q-3.21/pic%202.png)
 
+##  Reference(s)
+- https://github.com/SeanStaz/theCollatzConjecture.c
+- https://www.geeksforgeeks.org/wait-system-call-c/
+- https://www.geeksforgeeks.org/fork-system-call/
+- https://man7.org/linux/man-pages/man2/fork.2.html
+- https://man7.org/linux/man-pages/man2/wait.2.html
+
 ## Inference
 The child process created by parent process is able to print the Collatz Conjecture sequence and once the child process exits then the parent comes out of waiting state and exectues rest of the code.
