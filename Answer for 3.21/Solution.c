@@ -1,11 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <sys/wait.h>
-#include<sys/types.h>
-#include<sys/stat.h>
-#include<string.h>
+#include <string.h>
 #include <unistd.h>
-#include <time.h>
 
 int main(int argc, char *argv[]){
 
